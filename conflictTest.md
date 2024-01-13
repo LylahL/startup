@@ -1,2 +1,2 @@
 This is some Text.
-I changed some more text.
+I changed some text.

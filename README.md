@@ -22,7 +22,12 @@ As me personally is super in to nail art, I've always wished for a platform of n
 - **JavaScript**
   - Makes the website interactive.
 - **Service**
+  - Log in/ Sign up
+  - Store collections
+  - Save yours and others designs
 - **Login**
+   - Users may log in to their personal account have their designs and collections saved.
 - **WebSocket**
-  - Provieds realtime data for the amount of users have saved the design
+  - Use for display the amount of how many people have saved a design.
 - **React**
+  - Application ported to use the React web framework.

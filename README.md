@@ -31,3 +31,17 @@ As me personally is super in to nail art, I've always wished for a platform of n
   - Use for display the amount of how many people have saved a design.
 - **React**
   - Application ported to use the React web framework.
+## HTML deliverable
+For this deliverable I built out the structure of my application using HTML.
+- **HTML pages**
+  - Four HTML page, index for log in or sign up, myAccount to design nails, explore to check out other peoples design, existingNails for storing design collection.
+- **Links**
+  - The login page links to the myAccount page, and can use buttons to navigate through other pages they are all linked together. Sign out to get back to the login page.
+- **Text**
+  - Use HEX codes to represent nail colors
+- **Images**
+  - Included image of icon
+- **DB/Login**
+  - Input box and submit button for login, and like button for how many other users have liked your design.
+- **WebSocket**
+ - The count of like represent realtime data.

@@ -45,3 +45,5 @@ For this deliverable I built out the structure of my application using HTML.
   - Input box and submit button for login, and like button for how many other users have liked your design.
 - **WebSocket**
  - The count of like represent realtime data.
+- **Third Party Services**
+- Calls Colormind API to generate a random set of color design.

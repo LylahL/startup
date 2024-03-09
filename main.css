@@ -1,0 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* color design link https://colordesigner.io/color-scheme-builder?mode=lch#04888B-503D2E-D34C27-E2A72E-EFEBC8 */
+/* header styling */
+header {
+    background-color: #04888B;
+    color: #efebc8;
+    padding:10px;
+    text-align: left;
+    text-shadow: 4px 3px 0px #D34C27;
+}

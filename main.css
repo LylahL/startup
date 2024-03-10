@@ -6,9 +6,28 @@
 /* color design link https://colordesigner.io/color-scheme-builder?mode=lch#04888B-503D2E-D34C27-E2A72E-EFEBC8 */
 /* header styling */
 header {
-    background-color: #04888B;
+    background-color: #11a9ac;
     color: #efebc8;
     padding:10px;
     text-align: left;
     text-shadow: 4px 3px 0px #D34C27;
+}
+
+body {
+    background-image: url('flowerbackground.jpg');
+    background-size: 700px;
+    background-repeat: repeat;
+    animation: BackgroundFloat 15s ease-in-out infinite alternate both;
+}
+
+@keyframes BackgroundFloat {
+    0% {
+        background-position: 50% 0;
+    }
+    50% {
+        background-position: 45% 30px; 
+    }
+    100% {
+        background-position: 50% 0px; 
+    }
 }

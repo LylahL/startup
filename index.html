@@ -21,23 +21,23 @@
             <h1>NailEdit <sup>&reg;</sup></h1>   
         </header>
         <main>
-            <form method="get" action="myAccount.html">
-                <div>   
-                    <div>
+            <div class="login-container">
+                <h2>Welcome</h2>
+                <form method="get" action="myAccount.html" class="login-form"> 
+                    <div class="form-group">
                         <Label for="username">Username</Label>
-                        <input class="hadow-sm p-3 mb-5 bg-body-tertiary rounded" type="text" id="username" placeholder = "username"/>
+                        <input  type="text" id="username" placeholder = "username"/>
                     </div>
-                    <div >
+                    <div class="form-group">
                         <label for="password">Password</label>
-                        <input class="hadow-sm p-3 mb-5 bg-body-tertiary rounded" type="text" id="password" placeholder = "password"/>
-                    </div>
-                    <div>
-                        <button type="submit">Log In</button>
-                        <button type="submit">Sign Up</button>
-                    </div>
+                        <input type="text" id="password" placeholder = "password"/>
+                    </div>             
+                </form>
+                <div>
+                    <button type="submit">Log In</button>
+                    <button type="submit">Sign Up</button>
                 </div>
-                
-            </form>
+            </div>
         </main>
         <footer>
             <span class="text-reset">Lylah</span>

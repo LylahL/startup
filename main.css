@@ -31,3 +31,37 @@ body {
         background-position: 50% 0px; 
     }
 }
+main {
+    align-items: center;
+}
+.login-container {
+    height: 40vh;
+    width: 60vw;
+    max-width: 500px;
+    min-height: 300px;
+    margin: 100px, auto;
+    background-color: #efebc8;
+    border-radius: 17px;
+    border: 0.8vh outset #D34C27;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    color: #503D2E;
+}
+
+.login-form {
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 5vh;
+    min-height: 50px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #503D2E;
+}

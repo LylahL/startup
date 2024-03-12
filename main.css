@@ -1,6 +1,6 @@
 * {
     margin: 0;
-    padding: 0;
+    padding: 0px;
     box-sizing: border-box;
 }
 /* color design link https://colordesigner.io/color-scheme-builder?mode=lch#04888B-503D2E-D34C27-E2A72E-EFEBC8 */
@@ -39,15 +39,15 @@ main {
     height: 40vh;
     width: 60vw;
     max-width: 500px;
-    max-height: 350px;
+    max-height: 450px;
     margin: auto;
     margin-top: 15vh;
-    min-height: 300px;
-    min-width: 200px;
+    min-height: 320px;
+    min-width: 300px;
     background-color: #efebc8;
     border-radius: 17px;
     border: 0.8vh outset #D34C27;
-    padding: 20px;
+    padding: 30px;
     position: relative;
     display: flex;
     align-items: center;
@@ -65,13 +65,14 @@ h2 {
 }
 
 .login-form {
-    margin-top: 20px;
-    
+    margin-top: 10px;
 }
 
 .form-group {
-    margin-bottom: 2vh;
     min-height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 label {
@@ -80,12 +81,20 @@ label {
     color: #503D2E;
 }
 
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
 .btn-main {
     font-size: 1.3em;
     font-weight: bold; 
     border-radius: 9px;   
     background-color: transparent;
-    padding: 0.7em;
+    padding: 0.5em;
+    margin: 0.5em;
 }
 
 .color1:hover {
@@ -106,4 +115,14 @@ label {
 .color2:hover {
     background-color: #D34C27;
     color: #efebc8;
+}
+
+label {
+    font-size: 1.2em;
+}
+
+input {
+    border: 2px solid #E2A72E;
+    border-radius: 4px;
+    height: 2em;
 }

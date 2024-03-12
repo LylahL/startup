@@ -1,8 +1,4 @@
-* {
-    margin: 0;
-    padding: 0px;
-    box-sizing: border-box;
-}
+
 /* color design link https://colordesigner.io/color-scheme-builder?mode=lch#04888B-503D2E-D34C27-E2A72E-EFEBC8 */
 /* header styling */
 header {
@@ -125,4 +121,20 @@ input {
     border: 2px solid #E2A72E;
     border-radius: 4px;
     height: 2em;
+}
+
+footer {
+    background-color: #E2A72E;
+    color: #efebc8;
+    display: flex;
+    text-shadow: 2px 1px 0px #11a9ac;
+    position:absolute;
+    width: 100%;
+    bottom: 0px;
+    align-items: flex-start;
+    font-size: 1.5em;
+}
+
+span {
+    margin: 0 0.5em;
 }

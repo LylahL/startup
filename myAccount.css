@@ -1,9 +1,19 @@
 .container{
+    height: 30vh;
+    width: 70vw;
+    max-width: 600px;
+    max-height: 400px;
+    margin: auto;
+    margin-top: 15vh;
+    min-height: 200px;
+    min-width: 300px;
+    background-color: #efebc8;
+    border-radius: 17px;
+    border: 0.8vh outset #D34C27;
+    padding: 30px;
+    position: relative;
     display: flex;
-    justify-content: space-around;
-    background-color: lightgray;
-    padding:10px;
-    border:1px solid black;
+    align-items: center;
     flex-direction: column;
 }
 
@@ -14,11 +24,15 @@
 }
 
 .nail{
-    width: 30px;
-    height: 50px;
-    background-color: deepskyblue;
-    margin:0 7px;
-    border:1px solid black;
+    width: 4em;
+    height: 6em;
+    background-color: deepskyblue; margin:0 7px;
+    border:2px solid #644f3e;
+    border-radius: 13px 13px 23px 23px;
+    background: #FFF5AD;
+    background: -moz-linear-gradient(top, #FFF5AD 0%, #FFA33D 47%, #C6FFFF 100%);
+    background: -webkit-linear-gradient(top, #FFF5AD 0%, #FFA33D 47%, #C6FFFF 100%);
+    background: linear-gradient(to bottom, #FFF5AD 0%, #FFA33D 47%, #C6FFFF 100%);
 }
 
 .nav-bar {
@@ -51,6 +65,26 @@
     color: #efebc8;
     border: 2px dotted #E2A72E;
 }
+
+.color2 {
+    color: #D34C27;
+    border: 2px solid #D34C27;
+    background-color: #E2A72E;
+    align-self: flex-end;
+    justify-content: flex-end;
+}
+
+.color2:hover {
+    background-color: #D34C27;
+    color: #efebc8;
+}
+
+h2 {
+    margin-top: 20px;
+    text-align: center;
+    color: #503D2E;
+}
+
 
 
 body {

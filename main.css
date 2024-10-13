@@ -68,6 +68,11 @@ main {
     width: 100%;
 }
 
+.like-container {
+    display: flex;
+    align-items: center; /* Aligns items vertically at the center */
+}
+
 .nail {
     width: 4em;
     height: 6em;
@@ -82,7 +87,7 @@ main {
 }
 
 h2 {
-    margin: 15px;
+    margin: 15px 0px;
     text-align: center;
     color: #503D2E;
 }

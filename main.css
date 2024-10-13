@@ -1,16 +1,14 @@
-
-/* color design link https://colordesigner.io/color-scheme-builder?mode=lch#04888B-503D2E-D34C27-E2A72E-EFEBC8 */
-/* header styling */
 header {
     background-color: #11a9ac;
     color: #efebc8;
-    padding:10px;
+    padding: 10px;
     text-align: left;
     text-shadow: 4px 3px 0px #D34C27;
     border-bottom: groove #E2A72E 0.8vh;
 }
 
 body {
+    margin: 0;
     background-image: url('flowerbackground.jpg');
     background-size: 700px;
     background-repeat: repeat;
@@ -28,18 +26,12 @@ body {
         background-position: 50% 0px; 
     }
 }
+
 main {
     align-items: center;
 }
-.login-container {
-    height: 40vh;
-    width: 60vw;
-    max-width: 500px;
-    max-height: 450px;
-    margin: auto;
-    margin-top: 15vh;
-    min-height: 320px;
-    min-width: 300px;
+
+.login-container, .container {
     background-color: #efebc8;
     border-radius: 17px;
     border: 0.8vh outset #D34C27;
@@ -48,14 +40,49 @@ main {
     display: flex;
     align-items: center;
     flex-direction: column;
-    /* position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -60%); */
+    margin: auto;
+    margin-top: 15vh;
+}
+
+.login-container {
+    height: 40vh;
+    width: 60vw;
+    max-width: 500px;
+    max-height: 450px;
+    min-height: 320px;
+    min-width: 300px;
+}
+
+.container {
+    height: 25vh;
+    width: 70vw;
+    max-width: 600px;
+    max-height: 400px;
+    min-height: 200px;
+    min-width: 300px;
+}
+
+.nail_container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.nail {
+    width: 4em;
+    height: 6em;
+    background-color: deepskyblue; 
+    margin: 0 7px;
+    border: 2px solid #644f3e;
+    border-radius: 13px 13px 23px 23px;
+    background: #FFF5AD;
+    background: -moz-linear-gradient(top, #FFF5AD 0%, #FFA33D 47%, #C6FFFF 100%);
+    background: -webkit-linear-gradient(top, #FFF5AD 0%, #FFA33D 47%, #C6FFFF 100%);
+    background: linear-gradient(to bottom, #FFF5AD 0%, #FFA33D 47%, #C6FFFF 100%);
 }
 
 h2 {
-    margin-top: 5px;
+    margin: 15px;
     text-align: center;
     color: #503D2E;
 }
@@ -75,6 +102,7 @@ label {
     display: block;
     margin-bottom: 8px;
     color: #503D2E;
+    font-size: 1.2em;
 }
 
 .buttons {
@@ -84,51 +112,69 @@ label {
     flex-direction: row;
 }
 
-.btn-main {
-    font-size: 1.3em;
-    font-weight: bold; 
-    border-radius: 9px;   
-    background-color: transparent;
-    padding: 0.5em;
-    margin: 0.5em;
-}
-
-.color1:hover {
-    background-color: #11a9ac;
-    color: #efebc8;
-}
-
-.color1 {
-    color: #D34C27;
-    border: 2px solid #11a9ac;
-}
-
-.color2 {
-    color: #11a9ac;
-    border: 2px solid #D34C27;
-}
-
-.color2:hover {
-    background-color: #D34C27;
-    color: #efebc8;
-}
-
-label {
-    font-size: 1.2em;
-}
-
 input {
     border: 2px solid #E2A72E;
     border-radius: 4px;
     height: 2em;
 }
 
+/* Navbar styling */
+.nav-bar {
+    background-color: #11a9ac;
+    color: #efebc8;
+    padding: 10px;
+    text-align: left;
+    text-shadow: 4px 3px 0px #D34C27;
+    border-bottom: groove #E2A72E 0.8vh;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+/* Button Styling */
+.btn-main {
+    font-size: 1.2em;
+    font-weight: bold; 
+    border-radius: 9px;   
+    background-color: transparent;
+    padding: 0.5em 1em;
+    margin: 0.5em 1em;
+}
+
+/* Color classes */
+.color1 {
+    color: #D34C27;
+    border: 2px solid #D34C27;
+}
+.color1a:hover {
+    color: #efebc8;
+    border: 2px dotted #E2A72E;
+}
+
+.color1b:hover {
+    color:  #11a9ac;
+    border: 2px dotted #E2A72E;
+}
+
+.color2 {
+    color: #D34C27;
+    border: 2px solid #D34C27;
+    background-color: #E2A72E;
+    align-self: flex-end;
+    justify-content: flex-end;
+}
+
+.color2:hover {
+    background-color: #D34C27;
+    color: #efebc8;
+}
 footer {
     background-color: #E2A72E;
     color: #efebc8;
     display: flex;
     text-shadow: 2px 1px 0px #11a9ac;
-    position:absolute;
+    position: absolute;
     width: 100%;
     bottom: 0px;
     align-items: flex-start;

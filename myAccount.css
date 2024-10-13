@@ -61,8 +61,13 @@
     color: #D34C27;
     border: 2px dotted #D34C27;
 }
-.color1:hover {
+.color1a:hover {
     color: #efebc8;
+    border: 2px dotted #E2A72E;
+}
+
+.color1b:hover {
+    color:  #11a9ac;
     border: 2px dotted #E2A72E;
 }
 

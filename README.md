@@ -47,3 +47,16 @@ For this deliverable I built out the structure of my application using HTML.
  - The count of like represent realtime data.
 - **Third Party Services**
 - Calls Colormind API to generate a random set of color design.
+## CSS deliverable
+For this deliverable I proplerly styled the application into its final appearance
+- **Header,footer, and main content body**
+- **Navigation elements**
+  - The styling for navigation elements changes when hovering over them, and when switching inbetween tabs
+- **Responsive to window resizing**
+  - The app looks great on all window sizes and devices
+- **Application elements**
+  - Used good contrast and whitespace
+- **Application text content**
+  - Consistent fonts
+- **Application images**
+  - Background image floats

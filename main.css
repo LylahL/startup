@@ -54,8 +54,7 @@ main {
 }
 
 .container {
-    height: 25vh;
-    width: 70vw;
+    display: flex;
     max-width: 600px;
     max-height: 400px;
     min-height: 200px;

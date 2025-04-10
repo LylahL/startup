@@ -1,5 +1,18 @@
 {
   "dependencies": {
     "bootstrap": "^5.2.3"
+  },
+  "name": "startup",
+  "description": "This is a project for CS260\r ## Specification Deliverable\r ### Pitch\r As me personally is super in to nail art, I've always wished for a platform of nail art where you can unleash your creativity effortlessly. This web application is your personal haven for nail design enthusiasts. Dive into a user-friendly platform where you can effortlessly create and store your unique nail designs using a palette of endless colors. Showcase your artistic flair by sharing your creations online, and be inspired by checking out stunning designs from fellow users. \r ## Design\r ![NailEdit](https://github.com/LylahL/startup/assets/144963899/087377ac-0d71-45d5-b248-c8461075b707)\r ~~Do I need to draw a sequence diagram as well, not sure 🧐~~\r ## Key features\r - Secure log in/ sign up to your personal account\r - Random color generator\r - Edit nail colors or patterns through Hex code input\r - Post your own design\r - Explore other people's design\r - Save/ delete yours and other people's design to/ from your own collection\r - Amount of how many users have saved this design display in realtime\r ## Technologies\r - **HTML**\r   - Use HTML structure to construct four page. Log in page, Edit page, Explore page and Collection page.\r - **CSS**\r   - Beautify user interface design, makes the application looks apealing.\r - **JavaScript**\r   - Makes the website interactive.\r - **Service**\r   - Log in/ Sign up\r   - Store collections\r   - Save yours and others designs\r - **Login**\r    - Users may log in to their personal account have their designs and collections saved.\r - **WebSocket**\r   - Use for display the amount of how many people have saved a design.\r - **React**\r   - Application ported to use the React web framework.\r ## HTML deliverable\r For this deliverable I built out the structure of my application using HTML.\r - **HTML pages**\r   - Four HTML page, index for log in or sign up, myAccount to design nails, explore to check out other peoples design, existingNails for storing design collection.\r - **Links**\r   - The login page links to the myAccount page, and can use buttons to navigate through other pages they are all linked together. Sign out to get back to the login page.\r - **Text**\r   - Use HEX codes to represent nail colors\r - **Images**\r   - Included image of icon\r - **DB/Login**\r   - Input box and submit button for login, and like button for how many other users have liked your design.\r - **WebSocket**\r  - The count of like represent realtime data.\r - **Third Party Services**\r - Calls Colormind API to generate a random set of color design.\r ## CSS deliverable\r For this deliverable I proplerly styled the application into its final appearance\r - **Header,footer, and main content body**\r - **Navigation elements**\r   - The styling for navigation elements changes when hovering over them, and when switching inbetween tabs\r - **Responsive to window resizing**\r   - The app looks great on all window sizes and devices\r - **Application elements**\r   - Used good contrast and whitespace\r - **Application text content**\r   - Consistent fonts\r - **Application images**\r   - Background image floats",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^6.2.6"
   }
 }

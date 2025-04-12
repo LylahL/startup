@@ -28,6 +28,7 @@ export default function App() {
       </header>
 
       <Routes>
+        <Route path="/" element={<Login />} exact />
         <Route path="/login" element={<Login />} exact />
         <Route path="/explore" element={<Explore/>} />
         <Route path="/myAccount" element={<MyAccount />} />

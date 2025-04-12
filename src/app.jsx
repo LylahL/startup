@@ -8,6 +8,16 @@ import Explore from "./explore/explore";
 import Login from "./login/login";
 
 export default function App() {
+  const [authState, setAuthState] = useState(false);
+  const [username, setUsername] = useState('');
+
+  useEffect(() => {
+    const storedUsername = localStorage.getItem('username');
+    if (storedUsername) {
+      setUsername(storedUsername);
+      setAuthState(true);
+    }
+  }, []);
   return (
     <BrowserRouter>
       <header>

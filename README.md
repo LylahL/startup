@@ -1,12 +1,20 @@
 # NailEdit
+
 This is a project for CS260
+
 ## Specification Deliverable
+
 ### Pitch
-As me personally is super in to nail art, I've always wished for a platform of nail art where you can unleash your creativity effortlessly. This web application is your personal haven for nail design enthusiasts. Dive into a user-friendly platform where you can effortlessly create and store your unique nail designs using a palette of endless colors. Showcase your artistic flair by sharing your creations online, and be inspired by checking out stunning designs from fellow users. 
+
+As me personally is super in to nail art, I've always wished for a platform of nail art where you can unleash your creativity effortlessly. This web application is your personal haven for nail design enthusiasts. Dive into a user-friendly platform where you can effortlessly create and store your unique nail designs using a palette of endless colors. Showcase your artistic flair by sharing your creations online, and be inspired by checking out stunning designs from fellow users.
+
 ## Design
+
 ![NailEdit](https://github.com/LylahL/startup/assets/144963899/087377ac-0d71-45d5-b248-c8461075b707)
 ~~Do I need to draw a sequence diagram as well, not sure 🧐~~
+
 ## Key features
+
 - Secure log in/ sign up to your personal account
 - Random color generator
 - Edit nail colors or patterns through Hex code input
@@ -14,7 +22,9 @@ As me personally is super in to nail art, I've always wished for a platform of n
 - Explore other people's design
 - Save/ delete yours and other people's design to/ from your own collection
 - Amount of how many users have saved this design display in realtime
+
 ## Technologies
+
 - **HTML**
   - Use HTML structure to construct four page. Log in page, Edit page, Explore page and Collection page.
 - **CSS**
@@ -26,13 +36,16 @@ As me personally is super in to nail art, I've always wished for a platform of n
   - Store collections
   - Save yours and others designs
 - **Login**
-   - Users may log in to their personal account have their designs and collections saved.
+  - Users may log in to their personal account have their designs and collections saved.
 - **WebSocket**
   - Use for display the amount of how many people have saved a design.
 - **React**
   - Application ported to use the React web framework.
+
 ## HTML deliverable
+
 For this deliverable I built out the structure of my application using HTML.
+
 - **HTML pages**
   - Four HTML page, index for log in or sign up, myAccount to design nails, explore to check out other peoples design, existingNails for storing design collection.
 - **Links**
@@ -44,11 +57,14 @@ For this deliverable I built out the structure of my application using HTML.
 - **DB/Login**
   - Input box and submit button for login, and like button for how many other users have liked your design.
 - **WebSocket**
- - The count of like represent realtime data.
+- The count of like represent realtime data.
 - **Third Party Services**
 - Calls Colormind API to generate a random set of color design.
+
 ## CSS deliverable
+
 For this deliverable I proplerly styled the application into its final appearance
+
 - **Header,footer, and main content body**
 - **Navigation elements**
   - The styling for navigation elements changes when hovering over them, and when switching inbetween tabs
@@ -60,3 +76,26 @@ For this deliverable I proplerly styled the application into its final appearanc
   - Consistent fonts
 - **Application images**
   - Background image floats
+
+## React Phase 1: Routing deliverable
+
+For this deliverable I used JavaScript and React so that the application completely works for a single user. I also added placeholders for future technology.
+- Bundled using Vite 
+- NailEdit now boasts a modular React codebase.
+- React components facilitate easier maintenance and future feature expansion.
+
+  - **Component-Based Architecture:**  
+    The original HTML pages have been divided into modular React components:
+  - **Login Component:** Handles user authentication with a form for login and sign-up.
+  - **MyAccount Component:** Provides a workspace for creating and editing nail designs, featuring a random color generator and HEX code input.
+  - **Explore Component:** Displays nail designs from other users with like buttons that update realtime.
+  - **ExistingNails Component:** Allows users to view, save, and delete nail designs from their personal collection.
+
+- **Routing with React Router:**  
+  Client-side routing is managed through React Router, resulting in a smooth single-page application (SPA) experience. Users can navigate seamlessly between Login, MyAccount, Explore, and ExistingNails without full page reloads.
+
+- **Enhanced Styling & Layout:**  
+  The original CSS has been adapted for React and integrated within the component hierarchy. A flexbox-based layout ensures that:
+  - The header remains at the top.
+  - The main content area fills available space.
+  - A sticky footer is automatically pushed to the bottom on pages with little content (without using fixed positioning).

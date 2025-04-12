@@ -44,8 +44,30 @@ export default function App() {
       </header>
 
       <Routes>
-        <Route path="/" element={<Login />} exact />
-        <Route path="/login" element={<Login />} exact />
+      <Route
+          path="/"
+          element={
+            <Login
+              authState={authState}
+              setAuthState={setAuthState}
+              username={username}
+              setUsername={setUsername}
+            />
+          }
+          exact
+        />
+        <Route
+          path="/login"
+          element={
+            <Login
+              authState={authState}
+              setAuthState={setAuthState}
+              username={username}
+              setUsername={setUsername}
+            />
+          }
+          exact
+        />
         <Route path="/explore" element={<Explore/>} />
         <Route path="/myAccount" element={<MyAccount />} />
         <Route path="/existingNails" element={<ExistingNails />} />

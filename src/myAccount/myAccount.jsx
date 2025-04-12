@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../app.css';
 
-export default function ColorControl() {
+// Utility to generate a random 6-digit hex code
+function generateRandomHex() {
+  return Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, '0')
+    .toUpperCase();
+}
+
+export default function MyAccount() {
   return (
     <main>
     <div className="container">

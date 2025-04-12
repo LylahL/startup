@@ -28,9 +28,15 @@ export default function App() {
           <NavLink to="explore" className="btn-main color1 color1a">
             Explore
           </NavLink>
-          <NavLink to="login" className="btn-main color1 color1a">
-            Sign Out
-          </NavLink>
+          {authState ? (
+            <NavLink to="/login" className="btn-main color1 color1a">
+              Sign Out
+            </NavLink>
+          ) : (
+            <NavLink to="/login" className="btn-main color1 color1a">
+              Log In
+            </NavLink>
+          )}
           <NavLink to="existingNails" className="btn-main color2">
             Check Existing Nails
           </NavLink>

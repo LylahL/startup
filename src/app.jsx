@@ -1,24 +1,29 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
+import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { existingNails } from './existingNails/existingNails';
+import { myAccount } from './myAccount/myAccount';
+import { explore } from './explore/explore';
+import { index } from '../index';
 
 export default function App() {
   return (
-    <>
+    <BrowserRouter>
       <header>
         <div className="nav-bar">
-          <a href="myAccount.html">
-            <button className="btn-main color1 color1a">My Account</button>
-          </a>
-          <a href="explore.html">
-            <button className="btn-main color1 color1a">Explore</button>
-          </a>
-          <a href="index.html">
-            <button className="btn-main color1 color1a">Sign Out</button>
-          </a>
-          <a href="existingNails.html">
-            <button className="btn-main color2">Check Existing Nails</button>
-          </a>
+          <NavLink to="myAccount" className="btn-main color1 color1a">
+            My Account
+          </NavLink>
+          <NavLink to="explore" className="btn-main color1 color1a">
+            Explore
+          </NavLink>
+          <NavLink to="index" className="btn-main color1 color1a">
+            Sign Out
+          </NavLink>
+          <NavLink to="existingNails" className="btn-main color2">
+            Check Existing Nails
+          </NavLink>
         </div>
       </header>
 
@@ -28,6 +33,6 @@ export default function App() {
         <span className="text-reset">Lylah</span>
         <a href="https://github.com/LylahL/startup">GitHub</a>
       </footer>
-    </>
+    </BrowserRouter>
   );
 }

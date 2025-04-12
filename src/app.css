@@ -191,9 +191,14 @@
   }
   
   .live-messages {
-    margin: 10px 0 0 20px; /* 10px top margin, 20px left margin */
+    position: fixed;
+    top: 150px;    
+    left: 20px; 
+    z-index: 1000;
     background-color: transparent;
-    color: #fff;
+    color:#D34C27;
     font-size: 1em;
-    /* Removed positioning properties so it flows naturally */
+    font-weight: bold;
+    padding: 10px;
   }
+  

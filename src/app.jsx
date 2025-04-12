@@ -6,7 +6,7 @@ import ExistingNails from "./existingNails/existingNails";
 import MyAccount from "./myAccount/myAccount";
 import Explore from "./explore/explore";
 import Login from "./login/login";
-
+import LiveMessages from "./explore/liveMessages";
 
 export default function App() {
   const [authState, setAuthState] = useState(false);
@@ -43,6 +43,8 @@ export default function App() {
           </NavLink>
         </div>
       </header>
+
+      <LiveMessages />
 
       <Routes>
       <Route

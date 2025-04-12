@@ -3,7 +3,7 @@ import '../app.css';
 
 export default function Main() {
   return (
-    <>
+    <main>  
       <div className="container">
         <h2>Saved One</h2>
         <div className="nail_container">
@@ -37,6 +37,6 @@ export default function Main() {
         </div>
         <h2>Current Color: A0F7FC</h2>
       </div>
-    </>
+    </main>
   );
 }

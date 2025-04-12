@@ -2,7 +2,7 @@ import React from 'react';
 import "../app.css";
 export default function Explore() {
   return (
-    <>
+    <main>
       <div className="container">
         <h2>User One</h2>
         <div className="nail_container">
@@ -48,6 +48,6 @@ export default function Explore() {
           <h2> 65</h2>
         </div>
       </div>
-    </>
+    </main>
   );
 }

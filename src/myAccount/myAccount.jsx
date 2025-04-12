@@ -58,12 +58,12 @@ export default function MyAccount() {
       </div>
       <h2>Current Color: {currentColor || 'loading...'}</h2>
       <div>
-        <button className="btn-main color1 color1b">Random</button>  
-        <button className="btn-main color1 color1b">Custom</button>
-      </div>
-      <div>
-        <button className="btn-main color1 color1b">Save</button>
-      </div> 
+          <button onClick={handleRandomClick} className="btn-main color1 color1b">Random</button>
+          <button onClick={handleCustomClick} className="btn-main color1 color1b">Custom</button>
+        </div>
+        <div>
+          <button onClick={handleSaveClick} className="btn-main color1 color1b">Save</button>
+        </div> 
     </div>
     </main>
   );

@@ -11,12 +11,13 @@ function generateRandomHex() {
 
 export default function MyAccount() {
   const [currentColor, setCurrentColor] = useState('');
-   // Simulate a fetch request to obtain a random hex color on component load
-   useEffect(() => {
+
+  // Simulate a fetch request to obtain a random hex color on component load
+  useEffect(() => {
     setTimeout(() => {
       const color = generateRandomHex();
       setCurrentColor(color);
-    }, 500);  
+    }, 500);
   }, []);
 
   const handleRandomClick = () => {
@@ -45,26 +46,35 @@ export default function MyAccount() {
     alert('Design saved!');
   };
 
+  const handlePostClick = () => {
+    // Retrieve existing posted designs (or create an empty array) and add the new one
+    const postedDesigns = JSON.parse(localStorage.getItem('postedDesigns')) || [];
+    postedDesigns.push({ color: currentColor, timestamp: Date.now() });
+    localStorage.setItem('postedDesigns', JSON.stringify(postedDesigns));
+    alert('Design posted!');
+  };
+
   return (
     <main>
-    <div className="container">
-      <div className="nail_container">
- {/* Display nails with the currentColor from state */}
+      <div className="container">
+        <div className="nail_container">
+          {/* Display nails with the currentColor from state */}
           <div className="nail" style={{ backgroundColor: `#${currentColor}` }}></div>
           <div className="nail" style={{ backgroundColor: `#${currentColor}` }}></div>
           <div className="nail" style={{ backgroundColor: `#${currentColor}` }}></div>
           <div className="nail" style={{ backgroundColor: `#${currentColor}` }}></div>
           <div className="nail" style={{ backgroundColor: `#${currentColor}` }}></div>
-      </div>
-      <h2>Current Color: {currentColor || 'loading...'}</h2>
-      <div>
+        </div>
+        <h2>Current Color: {currentColor || 'loading...'}</h2>
+        <div>
           <button onClick={handleRandomClick} className="btn-main color1 color1b">Random</button>
           <button onClick={handleCustomClick} className="btn-main color1 color1b">Custom</button>
         </div>
         <div>
           <button onClick={handleSaveClick} className="btn-main color1 color1b">Save</button>
-        </div> 
-    </div>
+          <button onClick={handlePostClick} className="btn-main color1 color1b">Post</button>
+        </div>
+      </div>
     </main>
   );
 }

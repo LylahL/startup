@@ -10,17 +10,53 @@ function generateRandomHex() {
 }
 
 export default function MyAccount() {
+  const [currentColor, setCurrentColor] = useState('');
+   // Simulate a fetch request to obtain a random hex color on component load
+   useEffect(() => {
+    setTimeout(() => {
+      const color = generateRandomHex();
+      setCurrentColor(color);
+    }, 500);  
+  }, []);
+
+  const handleRandomClick = () => {
+    // Simulate another fetch call to update with a random hex code
+    setTimeout(() => {
+      const color = generateRandomHex();
+      setCurrentColor(color);
+    }, 300);
+  };
+
+  const handleCustomClick = () => {
+    // Prompt user to input a hex code (without the # symbol)
+    const userColor = prompt('Enter a hex code (without #):');
+    if (userColor && /^[A-Fa-f0-9]{6}$/.test(userColor)) {
+      setCurrentColor(userColor.toUpperCase());
+    } else {
+      alert('Invalid hex code. Please enter exactly 6 hex digits.');
+    }
+  };
+
+  const handleSaveClick = () => {
+    // Retrieve current saved designs (or an empty array) and add the new one
+    const savedDesigns = JSON.parse(localStorage.getItem('nailDesigns')) || [];
+    savedDesigns.push({ color: currentColor, timestamp: Date.now() });
+    localStorage.setItem('nailDesigns', JSON.stringify(savedDesigns));
+    alert('Design saved!');
+  };
+
   return (
     <main>
     <div className="container">
       <div className="nail_container">
-        <div className="nail"></div>
-        <div className="nail"></div>
-        <div className="nail"></div>
-        <div className="nail"></div>
-        <div className="nail"></div>
+ {/* Display nails with the currentColor from state */}
+          <div className="nail" style={{ backgroundColor: `#${currentColor}` }}></div>
+          <div className="nail" style={{ backgroundColor: `#${currentColor}` }}></div>
+          <div className="nail" style={{ backgroundColor: `#${currentColor}` }}></div>
+          <div className="nail" style={{ backgroundColor: `#${currentColor}` }}></div>
+          <div className="nail" style={{ backgroundColor: `#${currentColor}` }}></div>
       </div>
-      <h2>Current Color: A9F7FC</h2>
+      <h2>Current Color: {currentColor || 'loading...'}</h2>
       <div>
         <button className="btn-main color1 color1b">Random</button>  
         <button className="btn-main color1 color1b">Custom</button>

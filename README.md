@@ -99,3 +99,31 @@ For this deliverable I used JavaScript and React so that the application complet
   - The header remains at the top.
   - The main content area fills available space.
   - A sticky footer is automatically pushed to the bottom on pages with little content (without using fixed positioning).
+
+## React Phase 2: Reactivity Deliverable
+
+For this deliverable I used JavaScript and React to ensure the application is fully functional for a single user. I have also added placeholders for future technology.
+
+### My Account (myAccount.jsx)
+- Uses a helper function to generate a random hex code (simulating a third–party API call).
+- On component mount (inside a `useEffect`), it “fetches” an initial hex code.
+- The **Random** and **Custom** buttons let the user update the displayed hex code.
+- The **Save** button stores the current design (hex color) to localStorage so that the **Existing Nails** view can later load it.
+
+### Explore (explore.jsx)
+- Refactored into a parent component composed of two child components:
+  - **LiveMessages:** Uses a `useEffect` hook with `setInterval` to simulate a WebSocket that every few seconds “receives” a like message from a random user. It displays the latest five messages.
+  - **ExploreNails:** Displays nail designs for three sample users. The like button increments a local like counter on click.
+
+### Login (login.jsx)
+- Implements two child components that render based on the authentication state:
+  - **Unauthenticated:** Shows a login form. On a mock login (when username and password are provided), the username is stored in localStorage and reported back up via a callback.
+  - **Authenticated:** Welcomes the user and displays a **Sign Out** button which clears localStorage, updates the state, and “logs out” the user.
+- Also includes an optional **MessageDialog** component for error handling (handled simply in this deliverable).
+
+### App (app.jsx)
+- Lifts the authentication state (`authState` and `username`) into the top–level component so that other parts of the app (and even the navigation menu) can react to login changes.
+- Checks localStorage on startup and conditionally renders either **Log In** or **Sign Out** in the menu.
+
+### Existing Nails (existingNails.jsx)
+- Reads a list of saved designs from localStorage and displays each one, rendering nails with their saved hex code.

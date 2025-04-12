@@ -2,10 +2,10 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./app.css";
 import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
-import { existingNails } from "./existingNails/existingNails";
-import { myAccount } from "./myAccount/myAccount";
-import { explore } from "./explore/explore";
-import { login } from "./login/login";
+import ExistingNails from "./existingNails/existingNails";
+import MyAccount from "./myAccount/myAccount";
+import Explore from "./explore/explore";
+import Login from "./login/login";
 
 export default function App() {
   return (
@@ -28,10 +28,10 @@ export default function App() {
       </header>
 
       <Routes>
-        <Route path="/" element={<Login />} exact />
+        <Route path="/login" element={<Login />} exact />
         <Route path="/explore" element={<Explore/>} />
         <Route path="/myAccount" element={<MyAccount />} />
-        <Route path="/existingNails" element={<ExisitingNails />} />
+        <Route path="/existingNails" element={<ExistingNails />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
 

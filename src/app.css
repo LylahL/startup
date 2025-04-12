@@ -1,190 +1,191 @@
-header {
+/* Reset defaults */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Ensure the html, body, and #root fill the viewport */
+  html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* Apply background to the page */
+  body {
+    background-image: url('/flowerbackground.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation: BackgroundFloat 15s ease-in-out infinite alternate both;
+  }
+  
+  /* Header styling remains unchanged */
+  header {
     background-color: #11a9ac;
     color: #efebc8;
     padding: 10px;
     text-align: left;
-    text-shadow: 4px 3px 0px #D34C27;
     border-bottom: groove #E2A72E 0.8vh;
-}
-
-.body {
-    margin: 0;
-    background-image: url('flowerbackground.jpg');
-    background-size: 700px;
-    background-repeat: repeat;
-    animation: BackgroundFloat 15s ease-in-out infinite alternate both;
-}
-
-@keyframes BackgroundFloat {
-    0% {
-        background-position: 50% 0;
-    }
-    50% {
-        background-position: 45% 30px; 
-    }
-    100% {
-        background-position: 50% 0px; 
-    }
-}
-
-main {
+  }
+  
+  /* Main content: make it flex to center content and take available space */
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-}
-
-.login-container, .container {
+    justify-content: center;
+  }
+  
+  /* General container styles for login and other views */
+  .login-container,
+  .container {
     background-color: #efebc8;
     border-radius: 17px;
     border: 0.8vh outset #D34C27;
     padding: 30px;
-    position: relative;
     display: flex;
-    align-items: center;
     flex-direction: column;
-    margin: auto;
-    margin-top: 15vh;
-}
-
-.login-container {
-    height: 40vh;
-    width: 60vw;
-    max-width: 500px;
-    max-height: 450px;
-    min-height: 320px;
-    min-width: 300px;
-}
-
-.container {
-    display: flex;
+    align-items: center;
+    margin: 2em auto;
+    width: 90%;
     max-width: 600px;
-    max-height: 400px;
-    min-height: 200px;
-    min-width: 300px;
-}
-
-.nail_container {
+  }
+  
+  /* Nail container styling for layouts */
+  .nail_container {
     display: flex;
     justify-content: space-around;
     width: 100%;
-}
-
-.like-container {
+  }
+  
+  /* For the like button container */
+  .like-container {
     display: flex;
-    align-items: center; /* Aligns items vertically at the center */
-}
-
-.nail {
+    align-items: center;
+  }
+  
+  /* Nail styles with simplified gradient syntax */
+  .nail {
     width: 4em;
     height: 6em;
-    background-color: deepskyblue; 
     margin: 0 7px;
     border: 2px solid #644f3e;
     border-radius: 13px 13px 23px 23px;
-    background: #FFF5AD;
-    background: -moz-linear-gradient(top, #FFF5AD 0%, #FFA33D 47%, #C6FFFF 100%);
-    background: -webkit-linear-gradient(top, #FFF5AD 0%, #FFA33D 47%, #C6FFFF 100%);
     background: linear-gradient(to bottom, #FFF5AD 0%, #FFA33D 47%, #C6FFFF 100%);
-}
-
-h2 {
-    margin: 15px 0px;
+  }
+  
+  /* Heading styling */
+  h2 {
+    margin: 15px 0;
     text-align: center;
     color: #503D2E;
-}
-
-.login-form {
+  }
+  
+  /* Form styling */
+  .login-form {
     margin-top: 10px;
-}
-
-.form-group {
+  }
+  
+  .form-group {
     min-height: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-label {
-    display: block;
+  }
+  
+  label {
     margin-bottom: 8px;
     color: #503D2E;
     font-size: 1.2em;
-}
-
-.buttons {
+  }
+  
+  .buttons {
     display: flex;
-    align-items: center;
     justify-content: center;
-    flex-direction: row;
-}
-
-input {
+  }
+  
+  input {
     border: 2px solid #E2A72E;
     border-radius: 4px;
     height: 2em;
-}
-
-/* Navbar styling */
-.nav-bar {
+    padding: 0 5px;
+  }
+  
+  /* Navbar styling */
+  .nav-bar {
     background-color: #11a9ac;
     color: #efebc8;
     padding: 10px;
-    text-align: left;
-    text-shadow: 4px 3px 0px #D34C27;
-    border-bottom: groove #E2A72E 0.8vh;
     display: flex;
     align-items: center;
-    flex-direction: row;
-    justify-content: flex-start;
-}
-
-/* Button Styling */
-.btn-main {
+  }
+  
+  /* Button styling */
+  .btn-main {
     font-size: 1.2em;
-    font-weight: bold; 
-    border-radius: 9px;   
+    font-weight: bold;
+    border-radius: 9px;
     background-color: transparent;
     padding: 0.5em 1em;
     margin: 0.5em 1em;
-}
-
-/* Color classes */
-.color1 {
+  }
+  
+  /* Color classes */
+  .color1 {
     color: #D34C27;
     border: 2px solid #D34C27;
-}
-.color1a:hover {
+  }
+  .color1a:hover {
     color: #efebc8;
     border: 2px dotted #E2A72E;
-}
-
-.color1b:hover {
-    color:  #11a9ac;
+  }
+  
+  .color1b:hover {
+    color: #11a9ac;
     border: 2px dotted #E2A72E;
-}
-
-.color2 {
+  }
+  
+  .color2 {
     color: #D34C27;
     border: 2px solid #D34C27;
     background-color: #E2A72E;
-    align-self: flex-end;
-    justify-content: flex-end;
-}
-
-.color2:hover {
+  }
+  .color2:hover {
     background-color: #D34C27;
     color: #efebc8;
-}
-footer {
+  }
+  
+  /* Footer: push to the bottom when content is short */
+  footer {
+    margin-top: auto;
     background-color: #E2A72E;
     color: #efebc8;
     display: flex;
-    text-shadow: 2px 1px 0px #11a9ac;
-    position: absolute;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
     width: 100%;
-    bottom: 0px;
-    align-items: flex-start;
     font-size: 1.5em;
-}
-
-span {
-    margin: 0 0.5em;
-}
+  }
+  
+  /* Animation for the background image */
+  @keyframes BackgroundFloat {
+    0% {
+      background-position: 50% 0;
+    }
+    50% {
+      background-position: 45% 30px;
+    }
+    100% {
+      background-position: 50% 0px;
+    }
+  }
+  

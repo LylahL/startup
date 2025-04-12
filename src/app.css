@@ -18,11 +18,12 @@
     min-height: 100vh;
   }
   
-  /* Apply background to the page */
   body {
     background-image: url('/flowerbackground.jpg');
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center center; /* Centers the image */
+    background-attachment: fixed;       /* Fixes the image so it covers the entire viewport */
     animation: BackgroundFloat 15s ease-in-out infinite alternate both;
   }
   

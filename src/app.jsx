@@ -29,11 +29,11 @@ export default function App() {
             Explore
           </NavLink>
           {authState ? (
-            <NavLink to="/login" className="btn-main color1 color1a">
+            <NavLink to="login" className="btn-main color1 color1a">
               Sign Out
             </NavLink>
           ) : (
-            <NavLink to="/login" className="btn-main color1 color1a">
+            <NavLink to="login" className="btn-main color1 color1a">
               Log In
             </NavLink>
           )}

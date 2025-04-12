@@ -15,11 +15,10 @@ function LiveMessages() {
   }, []);
 
   return (
-    <div className="container" style={{ marginBottom: '1rem' }}>
-      <h2>Live Likes</h2>
-      <div style={{ border: '1px solid #ccc', padding: '10px', height: '100px', overflowY: 'scroll' }}>
-        {messages.map((msg, idx) => <p key={idx}>{msg}</p>)}
-      </div>
+    <div className="live-messages">
+      {messages.map((msg, idx) => (
+        <p key={idx}>{msg}</p>
+      ))}
     </div>
   );
 }

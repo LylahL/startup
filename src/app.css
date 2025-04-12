@@ -190,3 +190,10 @@
     }
   }
   
+  .live-messages {
+    margin: 10px 0 0 20px; /* 10px top margin, 20px left margin */
+    background-color: transparent;
+    color: #fff;
+    font-size: 1em;
+    /* Removed positioning properties so it flows naturally */
+  }

@@ -26,8 +26,7 @@
     background-attachment: fixed;       /* Fixes the image so it covers the entire viewport */
     animation: BackgroundFloat 15s ease-in-out infinite alternate both;
   }
-  
-  /* Header styling remains unchanged */
+ 
   header {
     background-color: #11a9ac;
     color: #efebc8;
@@ -73,17 +72,17 @@
     align-items: center;
   }
   
-  /* Nail styles with simplified gradient syntax */
   .nail {
     width: 4em;
     height: 6em;
     margin: 0 7px;
     border: 2px solid #644f3e;
     border-radius: 13px 13px 23px 23px;
-    background: linear-gradient(to bottom, #FFF5AD 0%, #FFA33D 47%, #C6FFFF 100%);
+    background: none;
   }
   
-  /* Heading styling */
+  
+
   h2 {
     margin: 15px 0;
     text-align: center;

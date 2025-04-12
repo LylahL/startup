@@ -1,50 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <!-- width of viewport is set to the width of the device screen and initial zoom level is set to 1.0 -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- This is what will be displayed on the tab bar -->
-        <title>NailEdit HTML</title>
-        <link rel="icon" href="nailIcon.jpg">
-        <link rel="stylesheet" href="main.css" />
-        <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-        crossorigin="anonymous"
-      />
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
 
-    </head>
-    <body>
-        <header>
-            <h1>NailEdit <sup>&reg;</sup></h1>   
-        </header>
-        <main>
-            <div class="login-container">
-                <h2>Welcome</h2>
-                <form method="get" action="myAccount.html" class="login-form"> 
-                    <div class="form-group">
-                        <div>
-                        <Label for="username">Username</Label>
-                        <input  type="text" id="username" placeholder = "username"/>
-                        </div>
-
-                        <div>
-                        <label for="password">Password</label>
-                        <input type="text" id="password" placeholder = "password"/>
-                        </div>
-                    </div>
-                    <div class="buttons">
-                        <button type="submit" class = "btn-main color1 color1b">Log In</button>
-                        <button type="submit" class = "btn-main color1 color1b">Sign Up</button>
-                    </div>         
-                </form>          
-            </div>
-        </main>
-        <footer>
-            <span class="text-reset">Lylah</span>
-            <a href="https://github.com/LylahL/startup">GitHub</a>
-        </footer>
-    </body>
+    <title>Simon React</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script type="module" src="/index.jsx"></script>
+  </body>
 </html>

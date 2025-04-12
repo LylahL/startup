@@ -7,7 +7,7 @@ header {
     border-bottom: groove #E2A72E 0.8vh;
 }
 
-body {
+.body {
     margin: 0;
     background-image: url('flowerbackground.jpg');
     background-size: 700px;

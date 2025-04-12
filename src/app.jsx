@@ -1,11 +1,11 @@
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './app.css';
-import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
-import { existingNails } from './existingNails/existingNails';
-import { myAccount } from './myAccount/myAccount';
-import { explore } from './explore/explore';
-import { index } from '../index';
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./app.css";
+import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
+import { existingNails } from "./existingNails/existingNails";
+import { myAccount } from "./myAccount/myAccount";
+import { explore } from "./explore/explore";
+import { login } from "./login/login";
 
 export default function App() {
   return (
@@ -18,7 +18,7 @@ export default function App() {
           <NavLink to="explore" className="btn-main color1 color1a">
             Explore
           </NavLink>
-          <NavLink to="index" className="btn-main color1 color1a">
+          <NavLink to="login" className="btn-main color1 color1a">
             Sign Out
           </NavLink>
           <NavLink to="existingNails" className="btn-main color2">
@@ -27,7 +27,13 @@ export default function App() {
         </div>
       </header>
 
-      <div className="body bg-dark text-light">App will display here</div>
+      <Routes>
+        <Route path="/" element={<Login />} exact />
+        <Route path="/explore" element={<Explore/>} />
+        <Route path="/myAccount" element={<MyAccount />} />
+        <Route path="/existingNails" element={<ExisitingNails />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
 
       <footer>
         <span className="text-reset">Lylah</span>
@@ -36,3 +42,7 @@ export default function App() {
     </BrowserRouter>
   );
 }
+
+function NotFound() {
+    return <main className="container-fluid bg-secondary text-center">404: Return to sender. Address unknown.</main>;
+  }

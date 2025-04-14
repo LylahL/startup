@@ -127,3 +127,54 @@ For this deliverable I used JavaScript and React to ensure the application is fu
 
 ### Existing Nails (existingNails.jsx)
 - Reads a list of saved designs from localStorage and displays each one, rendering nails with their saved hex code.
+
+## Service Deliverable
+
+This deliverable implements a comprehensive backend service for NailEdit using Node.js and Express, offering secure authentication, integration with third-party endpoints, and dedicated backend endpoints that power the React frontend.
+
+
+- **Node.js/Express HTTP Service:**  
+  The service is built on Node.js and Express, and listens on a specified port (defaulting to 4000). It provides RESTful endpoints for user registration, login, logout, nail design management, and a proxy for a third-party color service.
+
+- **Static Middleware for Frontend:**  
+  The Express static middleware serves the React frontend from the `public` directory. This integration ensures that the entire application (backend and frontend) runs as a single unified service.
+
+- **Third-Party API Integration:**  
+  The backend leverages `node-fetch` to proxy requests to [The Color API](https://www.thecolorapi.com/). By calling the endpoint with `hex=random`, the service always returns a random color, eliminating the need to generate a hex code locally.
+
+#### Authentication Endpoints
+
+- **Register:**  
+  **`POST /api/auth/create`**  
+  Registers a new user after ensuring that the email is not already in use. The password is securely hashed using `bcryptjs` and the user receives a token stored as an HTTP-only cookie.
+
+- **Login:**  
+  **`POST /api/auth/login`**  
+  Authenticates an existing user by validating the credentials. On success, the system issues a new session token (via UUID) and sets it in a secure cookie.
+
+- **Logout:**  
+  **`DELETE /api/auth/logout`**  
+  Logs out the user by removing their session token from the in-memory store and clearing the authentication cookie.
+
+
+#### Nail Design Endpoints
+
+- **Saved Designs (Private):**  
+  - **`POST /api/designs/saved`**  
+    Saves a nail design (color) for the authenticated user.
+  - **`GET /api/designs/saved`**  
+    Retrieves the saved designs for the logged-in user.
+  - **`DELETE /api/designs/saved/:id`**  
+    Deletes a specific design if it belongs to the authenticated user.
+
+- **Posted Designs (Public):**  
+  - **`POST /api/designs/posted`**  
+    Allows an authenticated user to post a design publicly.
+  - **`GET /api/designs/posted`**  
+    Retrieves all publicly posted nail designs.
+
+#### Third-Party Color API Proxy
+
+- **Random Color Endpoint:**  
+  **`GET /api/color`**  
+  This endpoint proxies a request to The Color API by calling it with `hex=random&format=json`. The result is forwarded to the client and used to display a random color on the frontend.

@@ -69,13 +69,15 @@ const verifyAuth = async (req, res, next) => {
 
 // Given a hex code, proxy to the color API
 apiRouter.get('/color', async (req, res) => {
-  const hex = req.query.hex;
-  if (!hex) {
-    return res.status(400).send({ msg: 'Missing hex parameter' });
-  }
+  const randomHex = Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, '0')
+    .toUpperCase();
   try {
-    const response = await fetch(`https://www.thecolorapi.com/id?hex=${hex}&format=json`);
+    const response = await fetch(`https://www.thecolorapi.com/id?hex=${randomHex}&format=json`);
     const colorData = await response.json();
+    // Include the generated hex (without the #) in the response
+    colorData.hex.clean = randomHex;
     res.send(colorData);
   } catch (error) {
     res.status(500).send({ msg: 'Error contacting Color API', error: error.message });

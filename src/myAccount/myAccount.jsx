@@ -14,18 +14,23 @@ export default function MyAccount() {
 
   // Simulate a fetch request to obtain a random hex color on component load
   useEffect(() => {
-    setTimeout(() => {
-      const color = generateRandomHex();
-      setCurrentColor(color);
-    }, 500);
+    fetch('/api/color')
+      .then(response => {
+        if (!response.ok) throw new Error('Failed to fetch random color');
+        return response.json();
+      })
+      .then(data => setCurrentColor(data.hex.clean))
+      .catch(err => alert(err.message));
   }, []);
 
   const handleRandomClick = () => {
-    // Simulate another fetch call to update with a random hex code
-    setTimeout(() => {
-      const color = generateRandomHex();
-      setCurrentColor(color);
-    }, 300);
+    fetch('/api/color')
+      .then(response => {
+        if (!response.ok) throw new Error('Failed to fetch random color');
+        return response.json();
+      })
+      .then(data => setCurrentColor(data.hex.clean))
+      .catch(err => alert(err.message));
   };
 
   const handleCustomClick = () => {

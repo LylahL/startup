@@ -7,12 +7,22 @@ export default function Unauthenticated({ onLogin }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (username && password) {
-      localStorage.setItem('username', username);
-      onLogin(username);
-    } else {
-      alert('Please enter both username and password.');
-    }
+    fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: username, password })
+    })
+      .then(response => {
+        if (!response.ok) throw new Error('Invalid login');
+        return response.json();
+      })
+      .then(data => {
+        localStorage.setItem('username', data.email);
+        onLogin(data.email);
+      })
+      .catch(err => {
+        alert(err.message);
+      });
   };
 
   return (

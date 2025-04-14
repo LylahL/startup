@@ -39,19 +39,31 @@ export default function MyAccount() {
   };
 
   const handleSaveClick = () => {
-    // Retrieve current saved designs (or an empty array) and add the new one
-    const savedDesigns = JSON.parse(localStorage.getItem('nailDesigns')) || [];
-    savedDesigns.push({ color: currentColor, timestamp: Date.now() });
-    localStorage.setItem('nailDesigns', JSON.stringify(savedDesigns));
-    alert('Design saved!');
+    fetch('/api/designs/saved', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ color: currentColor })
+    })
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to save design');
+        return res.json();
+      })
+      .then(result => alert(result.msg))
+      .catch(err => alert(err.message));
   };
 
   const handlePostClick = () => {
-    // Retrieve existing posted designs (or create an empty array) and add the new one
-    const postedDesigns = JSON.parse(localStorage.getItem('postedDesigns')) || [];
-    postedDesigns.push({ color: currentColor, timestamp: Date.now() });
-    localStorage.setItem('postedDesigns', JSON.stringify(postedDesigns));
-    alert('Design posted!');
+    fetch('/api/designs/posted', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ color: currentColor })
+    })
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to post design');
+        return res.json();
+      })
+      .then(result => alert(result.msg))
+      .catch(err => alert(err.message));
   };
 
   return (

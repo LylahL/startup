@@ -11,13 +11,26 @@ export default function Login({ authState, setAuthState, username, setUsername }
   const handleLogin = (uname) => {
     setUsername(uname);
     setAuthState(true);
+    localStorage.setItem('username', uname);
   };
 
+  // Call the backend logout endpoint then clear the local state
   const handleLogout = () => {
-    setUsername('');
-    localStorage.removeItem('username');
-    setAuthState(false);
+    fetch('/api/auth/logout', { method: 'DELETE' })
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Logout failed');
+        }
+        return res.text();
+      })
+      .then(() => {
+        setUsername('');
+        localStorage.removeItem('username');
+        setAuthState(false);
+      })
+      .catch(err => setError(err.message));
   };
+
 
   const handleErrorClose = () => {
     setError('');

@@ -5,9 +5,13 @@ export default function ExistingNails() {
   const [designs, setDesigns] = useState([]);
 
   useEffect(() => {
-    // Load saved designs from localStorage (if any)
-    const savedDesigns = JSON.parse(localStorage.getItem('nailDesigns')) || [];
-    setDesigns(savedDesigns);
+    fetch('/api/designs/saved')
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to fetch designs');
+        return res.json();
+      })
+      .then(data => setDesigns(data))
+      .catch(err => console.error(err));
   }, []);
 
   return (

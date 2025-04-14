@@ -5,8 +5,13 @@ export default function ExploreNails() {
   const [postedDesigns, setPostedDesigns] = useState([]);
 
   useEffect(() => {
-    const storedDesigns = JSON.parse(localStorage.getItem('postedDesigns')) || [];
-    setPostedDesigns(storedDesigns);
+    fetch('/api/designs/posted')
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to fetch posted designs');
+        return res.json();
+      })
+      .then(data => setPostedDesigns(data))
+      .catch(err => console.error(err));
   }, []);
 
   return (

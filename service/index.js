@@ -19,7 +19,7 @@ app.use(cookieParser());
 app.use(express.static('public'));
 
 const apiRouter = express.Router();
-app.use('/api', apiRouter);S
+app.use('/api', apiRouter);
 
 // Create a new user account
 apiRouter.post('/auth/create', async (req, res) => {

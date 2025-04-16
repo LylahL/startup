@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 const uuid = require('uuid');
 const fetch = require('node-fetch');
 const app = express();
+const database = require('./database');
 
 const authCookieName = 'token';
 
@@ -15,6 +16,8 @@ app.use(express.static('public'));
 
 const apiRouter = express.Router();
 app.use('/api', apiRouter);
+
+database.connectToDb()
 
 // Create a new user account
 apiRouter.post('/auth/create', async (req, res) => {
@@ -33,8 +36,10 @@ apiRouter.post('/auth/login', async (req, res) => {
   const { email, password } = req.body;
   const user = await findUser('email', email);
   if (user && await bcrypt.compare(password, user.password)) {
-    user.token = uuid.v4();
-    setAuthCookie(res, user.token);
+    const newToken = uuid.v4();
+    user.token = newToken;
+    await database.updateUserToken(email, newToken);
+    setAuthCookie(res, newToken);
     res.send({ email: user.email });
     return;
   }

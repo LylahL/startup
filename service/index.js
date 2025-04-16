@@ -17,7 +17,6 @@ app.use(express.static('public'));
 const apiRouter = express.Router();
 app.use('/api', apiRouter);
 
-database.connectToDb()
 
 // Create a new user account
 apiRouter.post('/auth/create', async (req, res) => {
@@ -145,8 +144,14 @@ app.use((err, req, res, next) => {
   res.status(500).send({ type: err.name, message: err.message });
 });
 
-app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
+
+database.connectToDb().then(() => {
+  app.listen(port, () => {
+    console.log(`Listening on port ${port}`);
+  });
+}).catch((err) => {
+  console.error('Database connection failed:', err);
+  process.exit(1);
 });
 
 async function createUser(email, password) {

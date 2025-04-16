@@ -38,3 +38,18 @@ async function createUser(user) {
     await getUsersCollection().insertOne(user);
     return user;
   }
+
+// Find user by field
+async function findUserByField(field, value) {
+    return await getUsersCollection().findOne({ [field]: value });
+  }
+
+// Update user by field
+async function updateUserToken(email, token) {
+    return await getUsersCollection().updateOne({ email }, { $set: { token } });
+  }
+
+//delete token
+async function clearUserToken(token) {
+    return await getUsersCollection().updateOne({ token }, { $unset: { token: "" } });
+  }

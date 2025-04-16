@@ -73,8 +73,16 @@ async function getUserSavedDesigns(email) {
 }
 
 async function getPostedDesigns() {
-    return await getPostedDesignsCollection().find({}).toArray();
-  }
-  
+  return await getPostedDesignsCollection().find({}).toArray();
+}
 
-
+module.exports = {
+  connectToDb,
+  createUser,
+  findUserByField,
+  updateUserToken,
+  clearUserToken,
+  saveDesign,
+  getUserSavedDesigns,
+  getPostedDesigns,
+};

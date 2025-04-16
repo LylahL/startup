@@ -72,4 +72,9 @@ async function getUserSavedDesigns(email) {
   return await getSavedDesignsCollection().find({ owner: email }).toArray();
 }
 
+async function getPostedDesigns() {
+    return await getPostedDesignsCollection().find({}).toArray();
+  }
+  
+
 

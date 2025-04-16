@@ -20,3 +20,21 @@ function getSavedDesignsCollection() {
 function getPostedDesignsCollection() {
   return db.collection("postedDesigns");
 }
+
+async function connectToDb() {
+    try {
+      await client.connect();
+      db = client.db('editNails');
+      await db.command({ ping: 1 });
+      console.log(`Connected to database: ${url}`);
+    } catch (err) {
+      console.error(`Unable to connect to database with ${url} because ${err.message}`);
+      process.exit(1);
+    }
+  }
+
+// Create new user
+async function createUser(user) {
+    await getUsersCollection().insertOne(user);
+    return user;
+  }

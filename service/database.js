@@ -3,25 +3,17 @@ const config = require("./dbConfig.json");
 
 const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`;
 const client = new MongoClient(url);
-let db;
+const db = client.db("editNails");
 
-//get collections
-function getUsersCollection() {
-  return db.collection("users");
-}
-
-function getSavedDesignsCollection() {
-  return db.collection("savedDesigns");
-}
-
-function getPostedDesignsCollection() {
-  return db.collection("postedDesigns");
-}
+// Direct collection references
+const userCollection = db.collection("users");
+const savedDesignsCollection = db.collection("savedDesigns");
+const postedDesignsCollection = db.collection("postedDesigns");
 
 async function connectToDb() {
   try {
     await client.connect();
-    db = client.db("editNails");
+    // Test connection via a ping
     await db.command({ ping: 1 });
     console.log(`Connected to database: ${url}`);
   } catch (err) {
@@ -34,43 +26,40 @@ async function connectToDb() {
 
 // Create new user
 async function createUser(user) {
-  await getUsersCollection().insertOne(user);
+  await userCollection.insertOne(user);
   return user;
 }
 
 // Find user by field
 async function findUserByField(field, value) {
-  return await getUsersCollection().findOne({ [field]: value });
+  return await userCollection.findOne({ [field]: value });
 }
 
 // Update user by field
 async function updateUserToken(email, token) {
-  return await getUsersCollection().updateOne({ email }, { $set: { token } });
+  return await userCollection.updateOne({ email }, { $set: { token } });
 }
 
 //delete token
 async function clearUserToken(token) {
-  return await getUsersCollection().updateOne(
-    { token },
-    { $unset: { token: "" } }
-  );
+  return await userCollection.updateOne({ token }, { $unset: { token: "" } });
 }
 
 // Save design to DB
 async function saveDesign(design, posted = false) {
   if (posted) {
-    return await getPostedDesignsCollection().insertOne(design);
+    return await postedDesignsCollection.insertOne(design);
   } else {
-    return await getSavedDesignsCollection().insertOne(design);
+    return await savedDesignsCollection.insertOne(design);
   }
 }
 
 async function getUserSavedDesigns(email) {
-  return await getSavedDesignsCollection().find({ owner: email }).toArray();
+  return await savedDesignsCollection.find({ owner: email }).toArray();
 }
 
 async function getPostedDesigns() {
-  return await getPostedDesignsCollection().find({}).toArray();
+  return await postedDesignsCollection.find({}).toArray();
 }
 
 module.exports = {

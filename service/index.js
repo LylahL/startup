@@ -7,11 +7,6 @@ const fetch = require('node-fetch');
 const app = express();
 
 const authCookieName = 'token';
-let users = [];
-
-// In-memory storage for designs
-let savedDesigns = [];
-let postedDesigns = [];
 
 app.use(express.json());
 app.use(cookieParser());

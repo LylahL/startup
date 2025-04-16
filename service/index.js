@@ -57,7 +57,7 @@ apiRouter.delete('/auth/logout', async (req, res) => {
   res.status(204).end();
 });
 
-// MVerify authentication for restricted endpoints
+// Middleware: Verify authentication for restricted endpoints
 const verifyAuth = async (req, res, next) => {
   const user = await findUser('token', req.cookies[authCookieName]);
   if (user) {
@@ -95,15 +95,15 @@ apiRouter.post('/designs/saved', verifyAuth, async (req, res) => {
     id: uuid.v4(),
     color: color.toUpperCase(),
     timestamp: Date.now(),
-    owner: req.user.email
+    owner: req.user.email,
   };
-  savedDesigns.push(design);
+  await database.saveDesign(design, false);
   res.send({ msg: 'Design saved successfully', design });
 });
 
 // Get saved designs for the logged–in user
 apiRouter.get('/designs/saved', verifyAuth, async (req, res) => {
-  const userDesigns = savedDesigns.filter(design => design.owner === req.user.email);
+  const userDesigns = await database.getUserSavedDesigns(req.user.email);
   res.send(userDesigns);
 });
 
@@ -118,14 +118,15 @@ apiRouter.post('/designs/posted', verifyAuth, async (req, res) => {
     id: uuid.v4(),
     color: color.toUpperCase(),
     timestamp: Date.now(),
-    owner: req.user.email
+    owner: req.user.email,
   };
-  postedDesigns.push(design);
+  await database.saveDesign(design, true);
   res.send({ msg: 'Design posted successfully', design });
 });
 
 // Get all publicly posted designs
 apiRouter.get('/designs/posted', async (req, res) => {
+  const postedDesigns = await database.getPostedDesigns();
   res.send(postedDesigns);
 });
 
@@ -133,7 +134,6 @@ apiRouter.get('/designs/posted', async (req, res) => {
 apiRouter.get('/protected', verifyAuth, async (req, res) => {
   res.send({ msg: `Hello, ${req.user.email}. You have access to protected data.` });
 });
-
 
 // Send the frontend index.html for any other routes (client-side routing support)
 app.use((_req, res) => {
@@ -151,18 +151,18 @@ app.listen(port, () => {
 
 async function createUser(email, password) {
   const passwordHash = await bcrypt.hash(password, 10);
-  const user = {
+  const userObj = {
     email,
     password: passwordHash,
     token: uuid.v4()
   };
-  users.push(user);
-  return user;
+  await database.createUser(userObj);
+  return userObj;
 }
 
 async function findUser(field, value) {
   if (!value) return null;
-  return users.find(u => u[field] === value);
+  return await database.findUserByField(field, value);
 }
 
 function setAuthCookie(res, authToken) {

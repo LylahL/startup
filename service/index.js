@@ -48,9 +48,10 @@ apiRouter.post('/auth/login', async (req, res) => {
 
 // Log out the current user
 apiRouter.delete('/auth/logout', async (req, res) => {
-  const user = await findUser('token', req.cookies[authCookieName]);
+  const token = req.cookies[authCookieName];
+  const user = await findUser('token', token);
   if (user) {
-    delete user.token;
+    await database.clearUserToken(token);
   }
   res.clearCookie(authCookieName);
   res.status(204).end();

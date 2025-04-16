@@ -178,3 +178,9 @@ This deliverable implements a comprehensive backend service for NailEdit using N
 - **Random Color Endpoint:**  
   **`GET /api/color`**  
   This endpoint proxies a request to The Color API by calling it with `hex=random&format=json`. The result is forwarded to the client and used to display a random color on the frontend.
+## DB/Login deliverable
+For this deliverable I associate the votes with the logged in user. I stored the votes in the database.
+
+ ### Stores data in MongoDB
+ ### Use MongoDB to store credentials
+ - Stores users, saved and posted designs, and number of likes

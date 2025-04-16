@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import "../app.css";
+import '../app.css';
 
 export default function ExploreNails() {
   const [postedDesigns, setPostedDesigns] = useState([]);
 
-  useEffect(() => {
+  const fetchPostedDesigns = () => {
     fetch('/api/designs/posted')
       .then(res => {
         if (!res.ok) throw new Error('Failed to fetch posted designs');
@@ -12,7 +12,24 @@ export default function ExploreNails() {
       })
       .then(data => setPostedDesigns(data))
       .catch(err => console.error(err));
+  };
+
+  useEffect(() => {
+    fetchPostedDesigns();
   }, []);
+
+
+  const handleLike = (designId) => {
+    fetch('/api/designs/like', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ designId: designId})
+    })
+      .then(() => {
+        fetchPostedDesigns();
+      })
+      .catch(err => console.error(err));
+  };
 
   return (
     <>
@@ -22,7 +39,7 @@ export default function ExploreNails() {
         </div>
       ) : (
         postedDesigns.map((design, index) => (
-          <div key={index} className="container" style={{ marginBottom: '1rem' }}>
+          <div key={design.id} className="container" style={{ marginBottom: '1rem' }}>
             <h2>Posted Design {index + 1}</h2>
             <div className="nail_container">
               <div className="nail" style={{ backgroundColor: `#${design.color}` }}></div>
@@ -32,6 +49,8 @@ export default function ExploreNails() {
               <div className="nail" style={{ backgroundColor: `#${design.color}` }}></div>
             </div>
             <h2>Current Color: {design.color}</h2>
+            <p>Likes: {design.likes || 0}</p>
+            <button onClick={() => handleLike(design.id)  } className="btn-main color1 color1b">Like</button>
           </div>
         ))
       )}

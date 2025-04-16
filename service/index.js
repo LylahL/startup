@@ -118,9 +118,25 @@ apiRouter.post('/designs/posted', verifyAuth, async (req, res) => {
     color: color.toUpperCase(),
     timestamp: Date.now(),
     owner: req.user.email,
+    likes: 0, // initialize likes count
   };
   await database.saveDesign(design, true);
   res.send({ msg: 'Design posted successfully', design });
+});
+
+apiRouter.post('/designs/like', async (req, res) => {
+  const { designId } = req.body;
+  console.log("Received like request for design:", designId);
+  try {
+    const result = await database.incrementDesignLikes(designId);
+    if (result.modifiedCount > 0) {
+      res.send({ msg: 'Like added successfully' });
+    } else {
+      res.status(404).send({ msg: 'Design not found' });
+    }
+  } catch (err) {
+    res.status(500).send({ msg: 'Error adding like', error: err.message });
+  }
 });
 
 // Get all publicly posted designs
@@ -134,7 +150,7 @@ apiRouter.get('/protected', verifyAuth, async (req, res) => {
   res.send({ msg: `Hello, ${req.user.email}. You have access to protected data.` });
 });
 
-// Send the frontend index.html for any other routes (client-side routing support)
+// Return the application's default page if the path is unknown
 app.use((_req, res) => {
   res.sendFile('index.html', { root: 'public' });
 });

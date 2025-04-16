@@ -61,6 +61,12 @@ async function getUserSavedDesigns(email) {
 async function getPostedDesigns() {
   return await postedDesignsCollection.find({}).toArray();
 }
+async function incrementDesignLikes(designId) {
+  return await postedDesignsCollection.updateOne(
+    { id: designId },
+    { $inc: { likes: 1 } }
+  );
+}
 
 module.exports = {
   connectToDb,
@@ -71,4 +77,5 @@ module.exports = {
   saveDesign,
   getUserSavedDesigns,
   getPostedDesigns,
+  incrementDesignLikes,
 };

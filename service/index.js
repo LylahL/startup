@@ -6,6 +6,8 @@ const uuid = require('uuid');
 const fetch = require('node-fetch');
 const app = express();
 const database = require('./database');
+const { peerProxy } = require('./peerProxy');
+
 
 const authCookieName = 'token';
 
@@ -162,9 +164,10 @@ app.use((err, req, res, next) => {
 
 
 database.connectToDb().then(() => {
-  app.listen(port, () => {
+  const server = app.listen(port, () => {
     console.log(`Listening on port ${port}`);
   });
+  peerProxy(server);
 }).catch((err) => {
   console.error('Database connection failed:', err);
   process.exit(1);

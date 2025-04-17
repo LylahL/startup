@@ -21,7 +21,6 @@ app.use('/api', apiRouter);
 
 // WebSocket Server
 const httpServer = require('http').createServer(app);
-const { peerProxy } = require('./peerProxy');
 const wsServer = peerProxy(httpServer);
 
 // Create a new user account
@@ -138,12 +137,19 @@ apiRouter.post('/designs/like', async (req, res) => {
     const design = await database.getPostedDesignById(designId);
 
     if (result.modifiedCount > 0 && design) {
-      const message = `${likedBy} liked ${design.owner}'s nail design!`;
-      wsServer.clients.forEach((client) => {
-        if (client.readyState === 1) {
-          client.send(message);
-        }
-      });
+      const message = `${likedBy} liked a nail design!`;
+
+      const wsServer = req.app.get('wsServer');
+      if (wsServer) {
+        wsServer.clients.forEach((client) => {
+          if (client.readyState === 1) {
+            client.send(message);
+          }
+        });
+      } else {
+        console.warn('WebSocket server not available');
+      }
+
       res.send({ msg: 'Like added successfully' });
     } else {
       res.status(404).send({ msg: 'Design not found' });
@@ -152,6 +158,7 @@ apiRouter.post('/designs/like', async (req, res) => {
     res.status(500).send({ msg: 'Error adding like', error: err.message });
   }
 });
+
 
 // Get all publicly posted designs
 apiRouter.get('/designs/posted', async (req, res) => {
@@ -176,13 +183,18 @@ app.use((err, req, res, next) => {
 
 
 database.connectToDb().then(() => {
-  const server = app.listen(port, () => {
+  const server = require('http').createServer(app);
+  const wsServer = peerProxy(server); 
+
+  server.listen(port, () => {
     console.log(`Listening on port ${port}`);
   });
-  peerProxy(server);
+
+  app.set('wsServer', wsServer);
 }).catch((err) => {
   console.error('Database connection failed:', err);
   process.exit(1);
+  
 });
 
 async function createUser(email, password) {

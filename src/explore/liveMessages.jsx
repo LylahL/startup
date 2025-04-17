@@ -5,13 +5,18 @@ export default function LiveMessages() {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      const randomUser = `User ${Math.floor(Math.random() * 100)}`;
-      const newMessage = `${randomUser} liked a nail design!`;
-      setMessages(prev => [...prev, newMessage].slice(-5));
-    }, 3000);
+    const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
+    const socket = new WebSocket(`${protocol}://localhost:4000`);
 
-    return () => clearInterval(interval);
+    socket.onmessage = (event) => {
+      console.log('Received message:', event);
+      const newMessage = event.data;
+      setMessages((prev) => [...prev, newMessage].slice(-5));
+    };
+
+    return () => {
+      socket.close();
+    };
   }, []);
 
   return (

@@ -19,6 +19,10 @@ app.use(express.static('public'));
 const apiRouter = express.Router();
 app.use('/api', apiRouter);
 
+// WebSocket Server
+const httpServer = require('http').createServer(app);
+const { peerProxy } = require('./peerProxy');
+const wsServer = peerProxy(httpServer);
 
 // Create a new user account
 apiRouter.post('/auth/create', async (req, res) => {
@@ -127,11 +131,19 @@ apiRouter.post('/designs/posted', verifyAuth, async (req, res) => {
 });
 
 apiRouter.post('/designs/like', async (req, res) => {
-  const { designId } = req.body;
+  const { designId, likedBy } = req.body;
   console.log("Received like request for design:", designId);
   try {
     const result = await database.incrementDesignLikes(designId);
-    if (result.modifiedCount > 0) {
+    const design = await database.getPostedDesignById(designId);
+
+    if (result.modifiedCount > 0 && design) {
+      const message = `${likedBy} liked ${design.owner}'s nail design!`;
+      wsServer.clients.forEach((client) => {
+        if (client.readyState === 1) {
+          client.send(message);
+        }
+      });
       res.send({ msg: 'Like added successfully' });
     } else {
       res.status(404).send({ msg: 'Design not found' });

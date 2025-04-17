@@ -31,6 +31,8 @@ function peerProxy(httpServer) {
       client.ping();
     });
   }, 10000);
+
+  return socketServer;
 }
 
 module.exports = { peerProxy };

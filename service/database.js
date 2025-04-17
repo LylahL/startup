@@ -54,6 +54,10 @@ async function saveDesign(design, posted = false) {
   }
 }
 
+async function getPostedDesignById(designId) {
+  return await postedDesignsCollection.findOne({ id: designId });
+}
+
 async function getUserSavedDesigns(email) {
   return await savedDesignsCollection.find({ owner: email }).toArray();
 }
@@ -78,4 +82,5 @@ module.exports = {
   getUserSavedDesigns,
   getPostedDesigns,
   incrementDesignLikes,
+  getPostedDesignById
 };

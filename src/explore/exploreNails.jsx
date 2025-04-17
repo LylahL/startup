@@ -3,6 +3,7 @@ import '../app.css';
 
 export default function ExploreNails() {
   const [postedDesigns, setPostedDesigns] = useState([]);
+  const [userEmail, setUserEmail] = useState('');
 
   const fetchPostedDesigns = () => {
     fetch('/api/designs/posted')
@@ -14,16 +15,26 @@ export default function ExploreNails() {
       .catch(err => console.error(err));
   };
 
+  const fetchUserInfo = () => {
+    fetch('/api/protected')
+      .then(res => {
+        if (!res.ok) throw new Error('User not logged in');
+        return res.json();
+      })
+      .then(data => setUserEmail(data.msg.split(', ')[1].split('.')[0])) // Extract email from "Hello, [email]. You have access..."
+      .catch(err => console.error(err));
+  };
+
   useEffect(() => {
     fetchPostedDesigns();
+    fetchUserInfo();
   }, []);
-
 
   const handleLike = (designId) => {
     fetch('/api/designs/like', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ designId: designId})
+      body: JSON.stringify({ designId: designId, likedBy: userEmail })
     })
       .then(() => {
         fetchPostedDesigns();
@@ -50,7 +61,12 @@ export default function ExploreNails() {
             </div>
             <h2>Current Color: {design.color}</h2>
             <p>Likes: {design.likes || 0}</p>
-            <button onClick={() => handleLike(design.id)  } className="btn-main color1 color1b">Like</button>
+            <button
+              onClick={() => handleLike(design.id)}
+              className="btn-main color1 color1b"
+            >
+              Like
+            </button>
           </div>
         ))
       )}

@@ -5,8 +5,11 @@ export default function LiveMessages() {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
+    const isLocalhost = window.location.hostname === 'localhost';
     const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
-    const socket = new WebSocket(`${protocol}://localhost:4000`);
+    const host = isLocalhost ? 'localhost:4000' : window.location.host;
+  
+    const socket = new WebSocket(`${protocol}://${host}`);
 
     socket.onmessage = (event) => {
       console.log('Received message:', event);

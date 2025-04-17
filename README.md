@@ -184,3 +184,11 @@ For this deliverable I associate the votes with the logged in user. I stored the
  ### Stores data in MongoDB
  ### Use MongoDB to store credentials
  - Stores users, saved and posted designs, and number of likes
+
+## WebSocket deliverable
+For this deliverable I used webSocket to update the votes on the frontend in realtime.
+
+ ### Backend listens for WebSocket connection - done!
+ ### Frontend makes WebSocket connection - done!
+ ### Data sent over WebSocket connection - done!
+ ### WebSocket data displayed - User likes display in realtime.
